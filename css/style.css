@@ -1,36 +1,80 @@
-/*! HTML5 Boilerplate v9.0.1 | MIT License | https://html5boilerplate.com/ */
-
-/* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
-
 html {
   color: #222;
   font-size: 1em;
   line-height: 1.4;
-  height: 100%;
   overflow-x: hidden;
+  height: 100%;
 }
 
 body {
-  height: 100%;
   margin: auto;
   font-family: "Montserrat", sans-serif;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * Customize the background color to match your design.
- */
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+  gap: 16px;
+}
+
+footer {
+  bottom: 0;
+  position: sticky;
+  margin-top: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+input {
+  padding: 20px 20px 20px 30px;
+  border-radius: 24px;
+  border: 1px solid #ccc;
+  width: 75%;
+  font-family: "Montserrat", sans-serif;
+  background: url('../img/google.svg') no-repeat scroll 7px 20px;
+}
+
+button {
+  height: 48px;
+  border: none;
+  border-radius: 4px;
+  padding: 0 15px;
+  font-family: "Montserrat", sans-serif;
+  width: 65%;
+}
+
+a {
+  color: #FF8C00;
+  text-underline-offset: 4px
+}
+
+.aboutTextContainer {
+  width: 300px;
+  height: 180px;
+}
+
+.aboutTextHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px
+}
 
 ::-moz-selection {
   background: #b3d4fc;
@@ -43,7 +87,7 @@ body {
 }
 
 /* ==========================================================================
-   Author's custom styles
+   Set Dark Mode
    ========================================================================== */
 @media (prefers-color-scheme: dark) {
   body {
@@ -66,67 +110,45 @@ body {
   }
 }
 
+/* ==========================================================================
+   Desktop Styles
+   ========================================================================== */
 @media only screen and (min-width: 600px) {
   body {
     background: brown !important;
   }
-  .searchContainer {
-    flex-direction: row;
-    gap: 20px;
+}
+
+/* ==========================================================================
+   About Text Animation
+   ========================================================================== */
+.animation-text-wipe {
+  opacity: 0;
+  -webkit-mask-size: 500%;
+}
+
+.animation-text-wipe {
+  -webkit-mask-image: -webkit-linear-gradient(to left, #0000 25%, #000 75%);
+}
+
+.animation-text-wipe.animate-in {
+  animation-name: text-wipe;
+  animation-duration: 230ms;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes text-wipe {
+  0% {
+    opacity: 0;
   }
-}
 
-.mainContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
+  50% {
+    opacity: 0.5;
+  }
 
-.searchContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 15px 0;
-  width: 100%;
-  gap: 16px;
-}
-
-.noAiIcon {
-  width: 250px;
-  height: 250px;
-}
-
-.aboutTextContainer {
-  max-width: 50%;
-}
-
-.aboutTextHeader {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px
-}
-
-.hidden {
-  display: none;
-}
-
-input {
-  padding: 20px 20px 20px 30px;
-  border-radius: 24px;
-  border: 1px solid #ccc;
-  width: 75%;
-  font-family: "Montserrat", sans-serif;
-  background: url('../img/google.svg') no-repeat scroll 7px 20px;
-}
-
-button {
-  height: 48px;
-  border: none;
-  border-radius: 4px;
-  padding: 0 15px;
-  font-family: "Montserrat", sans-serif;
+  100% {
+    opacity: 1;
+  }
 }
