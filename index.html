@@ -1,43 +1,60 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rae Search</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
   <meta name="description" content="A site to retrieve AI free google search results">
 
   <meta property="og:title" content="Rae Search">
   <meta property="og:type" content="website">
   <meta property="og:url" content="search.rae-dev.com">
-  <meta property="og:image" content="/img/icon.svg">
+  <meta property="og:image" content="./img/no-ai-icon-02.svg">
   <meta property="og:image:alt" content="Rae Search Logo">
 
-  <link rel="icon" href="/img/favicon.ico" sizes="any">
-  <link rel="icon" href="/img/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/img/icon.png">
+  <link rel="icon" href="./img/no-ai-icon-02.ico" sizes="any">
+  <link rel="icon" href="./img/no-ai-icon-02.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./img/no-ai-icon-02.svg">
 
   <link rel="manifest" href="site.webmanifest">
-  <meta name="theme-color" content="#fafafa">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F33A6A">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="black">
 </head>
 
 <body>
-
-  <!-- Add your site or application content here -->
-  <main class="mainContainer">
-    <div class="searchContainer">
-      <form action="https://www.google.com/search" method="get" onsubmit="handleSearch(event)">
-        <input type="hidden" name="udm" value="14">
-        <div class="relative">
-          <input type="search" id="search" name="q" class="" placeholder="Enter your search..." required />
-          <button type="submit" class="">AI-Free Search</button>
-        </div>
-      </form>
-    </div>
-  </main>
-
-  <script src="js/app.js"></script>
+<main class="mainContainer">
+  <img class="noAiIcon" src="./img/no-ai-icon-02.svg" alt="No AI Icon">
+  <form class="searchContainer" action="https://www.google.com/search" method="get" onsubmit="handleSearch(event)">
+    <input type="hidden" name="udm" value="14">
+    <input id="search" type="search" name="q" placeholder="Enter your search..." required/>
+    <button type="submit" class="">AI-Free Search</button>
+  </form>
+  <div class="aboutTextContainer">
+    <span class="aboutTextHeader">
+      <span>About</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+           viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+      </svg>
+    </span>
+    <span id="about" class="aboutText hidden">
+      <p>Rae Search user the Google search engine to retrieve search results.
+        What makes it different is the use of the
+        <a href="javascript:void(0)" onclick="getUdm14Info()">"udm=14" query parameter</a>,
+        which is appended to the search query.
+        This parameter tells Google to not use AI to personalize the search results.
+      </p>
+    </span>
+  </div>
+</main>
+<script src="js/app.js"></script>
 </body>
 
 </html>
