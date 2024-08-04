@@ -50,7 +50,7 @@ input {
   width: 75%;
   font-family: inherit;
   font-size: inherit;
-  background: url('../img/google.svg') no-repeat scroll 10px 15px;
+  background: url('../img/google.svg') no-repeat scroll 10px 17px;
 }
 
 button {
@@ -74,6 +74,10 @@ a {
   text-underline-offset: 4px
 }
 
+a:hover {
+  color: #FFA500;
+}
+
 .aboutTextContainer {
   width: 300px;
   height: 180px;
@@ -84,6 +88,17 @@ a {
   flex-direction: row;
   align-items: center;
   gap: 4px
+}
+
+.moreInfo {
+  color: #FF8C00;
+  text-decoration: underline;
+  text-underline-offset: 4px
+}
+
+.moreInfo:hover {
+  cursor: pointer;
+  color: #FFA500;
 }
 
 ::-moz-selection {
