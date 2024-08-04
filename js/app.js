@@ -1,5 +1,3 @@
-console.log('app.js loaded!');
-
 function getSearchUrl(searchTerm) {
   const encodedTerm = encodeURIComponent(searchTerm);
   return `https://www.google.com/search?q=${encodedTerm}&udm=14`;
@@ -29,8 +27,6 @@ function showAboutText(event) {
     aboutTextElement.style.display = 'none';
     aboutChevronElement.style.transform = 'rotate(0deg)';
   }
-
-  return false;
 }
 
 document.addEventListener("DOMContentLoaded", event => {
