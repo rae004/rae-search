@@ -29,6 +29,30 @@ function showAboutText(event) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", event => {
-  document.getElementById("search").focus();
+async function getAutoCompleteSuggestions(searchTerm) {
+  const response = await fetch(
+    `https://rae-dev.com/api/getGoogleSearchAutocomplete?search=${searchTerm}`,
+  );
+  const data = await response.json();
+  return data[1];
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('search').focus();
+});
+
+document.addEventListener('keyup', (event) => {
+  if (event.target.id === 'search' && event.target.value) {
+    console.log('search changed', event.target.value);
+    getAutoCompleteSuggestions(event.target.value).then((suggestions) => {
+      console.log('suggestions', suggestions);
+      // const suggestionList = document.getElementById('suggestions');
+      // suggestionList.innerHTML = '';
+      // suggestions.forEach(suggestion => {
+      //   const suggestionElement = document.createElement('li');
+      //   suggestionElement.textContent = suggestion;
+      //   suggestionList.appendChild(suggestionElement);
+      // });
+    });
+  }
 });
