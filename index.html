@@ -43,7 +43,10 @@
   <img src="img/no-ai-icon-02.svg" alt="No AI Icon" width="250px" height="250px">
   <form action="https://www.google.com/search" method="get" onsubmit="handleSearch(event)">
     <input type="hidden" name="udm" value="14">
-    <input id="search" type="search" name="q" placeholder="Enter your search..." required/>
+    <input id="search" type="search" name="q" placeholder="Enter your search..." list="suggestions" required/>
+    <datalist id="suggestions">
+      <!-- populated by google search autocomplete results -->
+    </datalist>
     <button type="submit">AI-Free Search</button>
   </form>
   <span class="aboutTextHeader" onclick="showAboutText(event)">

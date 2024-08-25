@@ -33,8 +33,7 @@ async function getAutoCompleteSuggestions(searchTerm) {
   const response = await fetch(
     `https://rae-dev.com/api/getGoogleSearchAutocomplete?search=${searchTerm}`,
   );
-  const data = await response.json();
-  return data[1];
+  return await response.json();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,16 +42,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('keyup', (event) => {
   if (event.target.id === 'search' && event.target.value) {
-    console.log('search changed', event.target.value);
     getAutoCompleteSuggestions(event.target.value).then((suggestions) => {
-      console.log('suggestions', suggestions);
-      // const suggestionList = document.getElementById('suggestions');
-      // suggestionList.innerHTML = '';
-      // suggestions.forEach(suggestion => {
-      //   const suggestionElement = document.createElement('li');
-      //   suggestionElement.textContent = suggestion;
-      //   suggestionList.appendChild(suggestionElement);
-      // });
+      const suggestionList = document.getElementById('suggestions');
+      suggestionList.innerHTML = '';
+      if ('results' in suggestions) {
+        suggestions.results.forEach((suggestion) => {
+          const suggestionElement = document.createElement('option');
+          suggestionElement.textContent = suggestion;
+          suggestionList.appendChild(suggestionElement);
+        });
+      }
     });
   }
 });
